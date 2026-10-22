@@ -1,0 +1,298 @@
+.show-list-container {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    min-height: 0;
+
+    padding: 20px 24px 24px;
+    color: var(--text);
+    gap: 16px;
+}
+
+/* Active and Done navigation */
+
+.category-tabs {
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+
+    padding: 4px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--bg-dark);
+}
+
+.category-tab {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 10px 12px;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    background: transparent;
+    color: var(--text-muted);
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.category-tab:hover {
+    color: var(--text);
+}
+
+.category-tab.selected {
+    color: var(--text);
+    background: var(--bg-light);
+    border-color: var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.category-count {
+    display: inline-flex;
+    min-width: 22px;
+    height: 22px;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 6px;
+
+    border-radius: 999px;
+    background: var(--border);
+
+    font-size: 0.75rem;
+}
+
+/* Submitted tasks */
+
+.submitted-list {
+    flex: 1;
+    max-height: none;
+}
+
+.submitted-task .text {
+    transition: color 0.25s ease;
+}
+
+.submitted-task.is-done .text {
+    color: var(--text-muted);
+}
+
+/* Animated strikethrough */
+
+.submitted-task.is-done .text::after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    content: "";
+    background: #22c55e;
+
+    transform-origin: left;
+
+    animation: draw-strike 0.35s ease both;
+}
+
+/* Completion, restore, and delete buttons */
+
+.complete-task-btn,
+.restore-task-btn,
+.list-delete-btn {
+    display: inline-flex;
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease,
+        background 0.2s ease;
+}
+
+/* Green checkmark button */
+
+.complete-task-btn {
+    background: #16a34a;
+    color: white;
+}
+
+.complete-task-btn:hover {
+    background: #15803d;
+    transform: translateY(-2px);
+}
+
+.complete-task-btn svg {
+    width: 22px;
+    height: 22px;
+}
+
+.complete-task-btn path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    stroke-dasharray: 26;
+    stroke-dashoffset: 26;
+
+    animation: draw-small-check 0.35s 0.05s ease forwards;
+}
+
+/* Restore button */
+
+.restore-task-btn {
+    background: var(--accent);
+    color: #111827;
+
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.restore-task-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+/* Delete button */
+
+.list-delete-btn {
+    background: #dc2626;
+    color: white;
+
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.list-delete-btn:hover {
+    background: #b91c1c;
+    transform: translateY(-2px);
+}
+
+/* Empty category */
+
+.list-empty-state {
+    display: flex;
+    flex: 1;
+
+    min-height: 150px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.list-empty-state p {
+    margin: 0;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.list-empty-state > span:last-child {
+    font-size: 0.9rem;
+}
+
+.empty-check {
+    display: grid;
+
+    width: 52px;
+    height: 52px;
+
+    place-items: center;
+    margin-bottom: 4px;
+
+    border-radius: 50%;
+
+    background: color-mix(
+        in srgb,
+        var(--accent) 14%,
+        transparent
+    );
+
+    color: var(--accent);
+    font-size: 1.7rem;
+}
+
+/* Animations */
+
+@keyframes draw-small-check {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes draw-strike {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+    .show-list-container {
+        padding: 14px;
+        gap: 12px;
+    }
+
+    .complete-task-btn,
+    .restore-task-btn,
+    .list-delete-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .category-tab {
+        padding: 9px 6px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .category-tab,
+    .complete-task-btn,
+    .restore-task-btn,
+    .list-delete-btn,
+    .complete-task-btn path,
+    .submitted-task.is-done .text::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

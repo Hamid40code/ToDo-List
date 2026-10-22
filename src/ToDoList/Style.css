@@ -1,0 +1,231 @@
+
+:root,
+.dark-root {
+    color-scheme: dark;
+
+    --bg-dark: #0b1120;
+    --bg: #151f32;
+    --bg-light: #1e293b;
+
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border: #334155;
+
+    --accent: #818cf8;
+    --accent-hover: #a5b4fc;
+
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.light-root {
+    color-scheme: light;
+
+    --bg-dark: #f1f5f9;
+    --bg: #ffffff;
+    --bg-light: #f8fafc;
+
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+
+    --accent: #4f46e5;
+    --accent-hover: #4338ca;
+
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* Global settings */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Inter, Arial, sans-serif;
+
+    background-color: var(--bg-dark);
+    color: var(--text);
+
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* Main application */
+
+.todo-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: min(90vw, 600px);
+    height: min(620px, 86dvh);
+    min-height: 420px;
+
+    margin: auto;
+
+    animation: page-enter 0.5s ease both;
+}
+
+/* Keep direct children centered without changing their dimensions */
+
+.todo-app > * {
+    flex-shrink: 0;
+}
+
+/* Main navigation */
+
+.btn-container {
+    display: flex;
+    flex-shrink: 0;
+
+    justify-content: space-between;
+    gap: 8px;
+
+    width: 100%;
+}
+
+.nav-btn {
+    flex: 1;
+
+    padding: 12px 20px;
+
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+
+    background-color: var(--bg);
+    color: var(--text);
+
+    font-weight: 600;
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.2s ease;
+}
+
+.nav-btn:hover {
+    background-color: var(--bg-light);
+}
+
+.nav-btn:active {
+    transform: scale(0.98);
+}
+
+.nav-btn.active-nav {
+    background-color: var(--bg);
+    border-color: var(--accent);
+}
+
+/* Main content container */
+
+.container {
+    display: flex;
+    flex: 1 1 0;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    background-color: var(--bg);
+    color: var(--text);
+
+    border-radius: 0 0 14px 14px;
+    box-shadow: var(--shadow);
+
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+/* Make the active page fill the content area */
+
+.container > * {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+}
+
+/* Page animation */
+
+@keyframes page-enter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+    .todo-app {
+        width: 94vw;
+        height: min(700px, 90dvh);
+        min-height: 400px;
+    }
+
+    .nav-btn {
+        padding: 11px 10px;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
