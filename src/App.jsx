@@ -1,5 +1,5 @@
-import ToDoList from "./ToDoList/ToDOList"
-import ThemeToggle from "./ThemeToggle/ThemeToggle"
+import ToDoList from "./Component/ToDoList/ToDoList"
+import ThemeToggle from "./Component/ThemeToggle/ThemeToggle"
 function App() {
   return (
     <>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import AddTask from './AddTask';
-import ShowList from './List';
-import './Style.css';
+import AddTask from '../AddTask/AddTask';
+import ShowList from '../../TaskList/List';
+import './ToDoList.css';
 
 const SUBMITTED_STORAGE_KEY = 'submittedTasks';
 

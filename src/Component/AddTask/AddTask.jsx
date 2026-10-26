@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import './AddTask.css';
 
-import arrowDownImg from '../assets/arrow-big-down-dash.png';
-import arrowUpImg from '../assets/arrow-big-up-dash.png';
-import deleteImg from '../assets/circle-x.png';
+import arrowDownImg from '../../assets/arrow-big-down-dash.png';
+import arrowUpImg from '../../assets/arrow-big-up-dash.png';
+import deleteImg from '../../assets/circle-x.png';
 
 const DRAFT_STORAGE_KEY = 'tasks';
 
