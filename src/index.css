@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+:root,
+.dark-root {
+  color-scheme: dark;
+  --bg-dark: #0b1120;
+  --bg: #151f32;
+  --bg-light: #1e293b;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --accent: #818cf8;
+  --accent-hover: #a5b4fc;
+  --shadow: 0 10px 30px rgb(0 0 0 / 20%);
+}
+
+.light-root {
+  color-scheme: light;
+  --bg-dark: #f1f5f9;
+  --bg: #fff;
+  --bg-light: #f8fafc;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --shadow: 0 10px 30px rgb(15 23 42 / 8%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  background-color: var(--bg-dark);
+  color: var(--text);
+  font-family: Inter, Arial, sans-serif;
+  transition: background-color 350ms ease, color 350ms ease;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.task-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--bg-dark);
+}
+
+.task-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.task-scrollbar::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: var(--bg-dark);
+}
+
+.task-scrollbar::-webkit-scrollbar-thumb {
+  border: 2px solid var(--bg-dark);
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-hover));
+}
+
+.task-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes task-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes success-overlay-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes draw-circle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes draw-small-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes draw-strike {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes draw-tick {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes success-pulse {
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
