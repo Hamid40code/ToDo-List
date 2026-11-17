@@ -1,48 +1,64 @@
-# ToDo List
+# 📝 ToDo List
 
-A React + Vite + TypeScript application styled with Tailwind CSS.
+A modern, responsive task management application built with React, TypeScript, and Tailwind CSS. Organize your tasks, track your progress, and manage your daily activities with a clean and interactive interface.
 
-## Requirements
+## 🚀 Live Demo
 
-- Node.js 20.19+ or 22.12+ (required by Vite 8)
-- npm
+[Open ToDo List](https://hamid40code.github.io/ToDo-List/)
 
-## Install and run
+## ✨ Features
+
+- **Add Tasks:** Create and organize tasks before submitting them.
+- **Reorder Tasks:** Change task order using up and down controls.
+- **Task Management:** Complete, restore, and delete tasks.
+- **Task Filtering:** Separate active and completed tasks with counters.
+- **Dark & Light Mode:** Switch themes with saved preferences.
+- **Local Storage:** Automatically save tasks and preferences.
+- **Responsive Design:** Optimized for desktop and mobile devices.
+- **Animations:** Smooth transitions and interactive feedback.
+
+## 🛠️ Tech Stack
+
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS 4
+- Local Storage
+
+## 📁 Project Structure
+
+```text
+ToDo-List/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── AddTask.tsx
+│   │   ├── TaskList.tsx
+│   │   └── ThemeToggle.tsx
+│   ├── types/
+│   │   └── task.ts
+│   ├── utils/
+│   │   └── storage.ts
+│   ├── App.tsx
+│   ├── main.tsx
+│   ├── index.css
+│   └── vite-env.d.ts
+├── index.html
+├── package.json
+├── package-lock.json
+└── vite.config.js
+```
+
+## ⚙️ Getting Started
 
 ```bash
+git clone https://github.com/Hamid40code/ToDo-List.git
+cd ToDo-List
 npm install
 npm run dev
 ```
 
-## Check and build
+---
 
-```bash
-npm run typecheck
-npm run build
-npm run preview
-```
-
-## Project structure
-
-```text
-src/
-├── assets/          # Existing task action icons
-├── components/      # AddTask, ShowList, ThemeToggle
-├── types/           # Shared TypeScript types
-├── utils/           # Storage and ID helpers
-├── App.tsx
-├── index.css        # Tailwind import and global theme/animation tokens
-└── main.tsx
-```
-
-## Preserved features
-
-- Add draft tasks, remove them, and reorder them before submitting
-- Submission confirmation animation
-- Active and Done task views
-- Complete, restore, and delete submitted tasks
-- Persist draft tasks, submitted tasks, and theme in local storage
-- Dark and light themes
-- Responsive layout and reduced-motion support
-
-The supplied ZIP contained the application's `src/` directory and image assets, but no `package.json`, HTML entry point, or build configuration. Those project files have been added as part of this migration. Existing local-storage keys (`tasks`, `submittedTasks`, and `theme`) are preserved, including support for the older saved task formats.
+**Built with React, TypeScript, and Vite.**
